@@ -1,0 +1,18 @@
+flowchart TD
+    A[Business Events / Triggers] --> B[Event Ingestion Layer]
+    B --> C[Control Plane Service]
+
+    C --> D[FSM Lifecycle Engine]
+    D --> E[Decision Logic / Policy Rules]
+    E --> F[Audit Store / Decision Log]
+
+    C --> G[Deployment Actions]
+    G --> H[Serving Plane / Model Endpoint]
+
+    H --> I[Predictions / Business Consumption]
+    H --> J[Operational Metrics / Monitoring]
+
+    J --> K[Alerts / Drift / Failure Events]
+    K --> B
+
+    F --> L[Governance / Risk / Compliance Visibility]

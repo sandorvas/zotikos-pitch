@@ -1,0 +1,15 @@
+stateDiagram-v2
+    [*] --> Drafted
+
+    Drafted --> Validated: technical validation passed
+    Validated --> Approved: governance approval granted
+    Approved --> Deployed: release action executed
+    Deployed --> Monitored: production checks healthy
+
+    Monitored --> RolledBack: incident / drift / failure
+    RolledBack --> Monitored: stable previous version restored
+
+    Monitored --> Retired: planned retirement
+    Approved --> Retired: cancelled before deployment
+
+    Retired --> [*]
